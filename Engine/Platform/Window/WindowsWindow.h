@@ -40,5 +40,4 @@ namespace influx {
     };
 }
 
-
 #endif //WINDOWSWINDOW_H

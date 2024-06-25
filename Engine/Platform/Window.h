@@ -15,9 +15,19 @@ namespace influx {
 
 struct WindowCreateInfo {
     uint32_t width = 800;
+
     uint32_t height = 600;
     std::string title;
     bool vsync = false;
+
+    friend std::size_t hash_value(const WindowCreateInfo &obj) {
+        std::size_t seed = 0x1791A227;
+        seed ^= (seed << 6) + (seed >> 2) + 0x281C0CC5 + static_cast<std::size_t>(obj.width);
+        seed ^= (seed << 6) + (seed >> 2) + 0x0BFC1359 + static_cast<std::size_t>(obj.height);
+        seed ^= (seed << 6) + (seed >> 2) + 0x1993DFEE + std::hash<std::string>()(obj.title);
+        seed ^= (seed << 6) + (seed >> 2) + 0x00C3C7BE + static_cast<std::size_t>(obj.vsync);
+        return seed;
+    }
 };
 
 class INFLUX_API Window {
