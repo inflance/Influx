@@ -4,6 +4,8 @@ project(InfluxEngine)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_definitions(-DINFLUX_BUILD_DLL)
+
 find_package(nlohmann_json)
 find_package(glfw3)
 find_package(spdlog)

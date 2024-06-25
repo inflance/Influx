@@ -62,4 +62,12 @@
 #   endif
 #endif
 
+#if !defined(INFLUX_NODISCARD)
+#   if INFLUX_CPP_VERSION >= 17
+#       define INFLUX_NODISCARD [[nodiscard]]
+#   else
+#       define INFLUX_NODISCARD
+#   endif
+#endif
+
 #endif //DEFINES_H

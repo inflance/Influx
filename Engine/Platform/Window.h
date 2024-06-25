@@ -31,12 +31,12 @@ public:
 
     virtual INFLUX_INLINE void setVSync(bool enabled) = 0;
 
-    virtual INFLUX_INLINE bool isVSync() const = 0;
-    virtual INFLUX_INLINE uint32_t getWidth() const  = 0;
-    virtual INFLUX_INLINE uint32_t  getHeight() const = 0;
-    virtual INFLUX_INLINE const std::string& getWindowTitle() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE bool isVSync() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE uint32_t getWidth() const  = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE uint32_t  getHeight() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE const std::string& getWindowTitle() const = 0;
 
-    virtual INFLUX_INLINE void* getNativeWindow() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE void* getNativeWindow() const = 0;
 
     virtual void swapBuffers() = 0;
 

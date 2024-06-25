@@ -26,6 +26,7 @@ namespace influx {
     }
 
     bool WindowsWindow::isVSync() const {
+        return false;
     }
 
     uint32_t WindowsWindow::getWidth() const {
@@ -37,11 +38,13 @@ namespace influx {
     }
 
     const std::string &WindowsWindow::getWindowTitle() const {
+        return m_CreateInfo.title;
     }
 
     void * WindowsWindow::getNativeWindow() const {
+        return nullptr;
     }
 
-    void swapBuffers() {
+    void WindowsWindow::swapBuffers() {
     }
 }

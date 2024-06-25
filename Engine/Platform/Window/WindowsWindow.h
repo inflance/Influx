@@ -8,7 +8,6 @@
 #include "Engine/Core/Export.h"
 #include "Engine/Platform/Window.h"
 
-
 namespace influx {
     class INFLUX_API WindowsWindow : public Window {
     public:
@@ -24,15 +23,15 @@ namespace influx {
 
         INFLUX_INLINE void setVSync(bool enabled) override;
 
-        INFLUX_INLINE bool isVSync() const override;
+        INFLUX_NODISCARD INFLUX_INLINE bool isVSync() const override;
 
-        INFLUX_INLINE uint32_t getWidth() const override;
+        INFLUX_NODISCARD INFLUX_INLINE uint32_t getWidth() const override;
 
-        INFLUX_INLINE uint32_t getHeight() const override;
+        INFLUX_NODISCARD INFLUX_INLINE uint32_t getHeight() const override;
 
-        INFLUX_INLINE const std::string &getWindowTitle() const override;
+        INFLUX_NODISCARD INFLUX_INLINE const std::string &getWindowTitle() const override;
 
-        INFLUX_INLINE void *getNativeWindow() const override;
+        INFLUX_NODISCARD INFLUX_INLINE void *getNativeWindow() const override;
 
         void swapBuffers() override;
 
