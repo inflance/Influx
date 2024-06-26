@@ -11,6 +11,7 @@ find_package(glfw3)
 find_package(spdlog)
 find_package(VulkanHeaders)
 find_package(glm)
+find_package(GTest)
 
 add_executable(InfluxEngine main.cpp
         Engine/Core/Engine.cpp
@@ -31,6 +32,7 @@ add_executable(InfluxEngine main.cpp
         Engine/Utils/AABB2.hpp
         Engine/Utils/AABB3.hpp
         Engine/Utils/BoundingSphere.hpp
+        Engine/Utils/Test/Test.cpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -41,5 +43,6 @@ target_link_libraries(InfluxEngine
         glfw
         spdlog::spdlog
         vulkan-headers::vulkan-headers
-        glm::glm)
+        glm::glm
+        gtest::gtest)
 #添加当前目录作为包含目录
