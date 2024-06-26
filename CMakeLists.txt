@@ -30,6 +30,7 @@ add_executable(InfluxEngine main.cpp
         Engine/Utils/Internal/RectangleImpl.hpp
         Engine/Utils/AABB2.hpp
         Engine/Utils/AABB3.hpp
+        Engine/Utils/BoundingSphere.hpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

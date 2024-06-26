@@ -9,10 +9,10 @@
 #include <glm/glm.hpp>
 
 #include "Engine/Core/Export.h"
-#include "Internal/BoundingBoxImpl.hpp"
+#include "Engine/Utils/Internal/BoundingBoxImpl.hpp"
 
 namespace influx {
-    template<typename T>
+    template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>,T>>
     class AABB2 : public BoundingBoxImpl<T> {
     public:
         static INFLUX_CONSTEXPR typename BoundingBoxImpl<T>::ValueType MaxValue = std::numeric_limits<T>::max();
@@ -68,10 +68,14 @@ namespace influx {
         ElementType m_min{MaxValue};
         ElementType m_max{MinValue};
     };
+
+    using AABB2f = AABB2<float>;
+    using AABB2d = AABB2<double>;
+    using AABB2i = AABB2<int>;
 }
 
-template<typename T>
+template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>,T>>
 INFLUX_STREAM_OUT_FUNCTION(influx::AABB2<T>,
                            "AABB2: min={" << type.min().x << "," << type.min().y << "}, max={" << type.max().x << "," <<
-                           type.max().y<< "}" << "\n")
+                           type.max().y<< "}")
 #endif //AABB2_HPP
