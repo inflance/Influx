@@ -16,7 +16,7 @@
 #if defined(_MSVC_LANG)
 #   define INFLUX_CPP _MSVC_LANG
 #elif defined(__cplusplus)
-#   define INFLUX_CPP__cplusplus
+#   define INFLUX_CPP __cplusplus
 #endif
 
 #if defined(__clang__)

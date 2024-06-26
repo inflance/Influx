@@ -10,6 +10,12 @@
 namespace  influx {
 
 class INFLUX_API RHI {
+    enum class API {
+        None = 0,
+        OpenGL = 1,
+        Vulkan = 2
+    };
+
 
 };
 

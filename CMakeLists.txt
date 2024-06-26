@@ -15,8 +15,6 @@ find_package(glm)
 add_executable(InfluxEngine main.cpp
         Engine/Core/Engine.cpp
         Engine/Core/Engine.h
-        Engine/Application.cpp
-        Engine/Application.h
         Engine/Core/Defines.h
         Engine/Core/Export.h
         Engine/RHI/RHI.cpp
@@ -25,6 +23,9 @@ add_executable(InfluxEngine main.cpp
         Engine/Platform/Window.h
         Engine/Platform/Window/WindowsWindow.cpp
         Engine/Platform/Window/WindowsWindow.h
+        Engine/Core/Log.cpp
+        Engine/Core/Log.h
+        Engine/Core/Enums.h
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

@@ -14,10 +14,10 @@
 namespace influx {
 
 struct WindowCreateInfo {
+    std::string title;
     uint32_t width = 800;
 
     uint32_t height = 600;
-    std::string title;
     bool vsync = false;
 
     friend std::size_t hash_value(const WindowCreateInfo &obj) {
@@ -49,6 +49,8 @@ public:
     INFLUX_NODISCARD virtual INFLUX_INLINE void* getNativeWindow() const = 0;
 
     virtual void swapBuffers() = 0;
+
+    INFLUX_NODISCARD virtual INFLUX_INLINE bool shouldClose() const = 0;
 
     static std::unique_ptr<Window> create(const WindowCreateInfo& createInfo);
 };
