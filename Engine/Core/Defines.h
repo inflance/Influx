@@ -70,4 +70,13 @@
 #   endif
 #endif
 
+#if !defined(INFLUX_STREAM_OUT_FUNCTION)
+#include <ostream>
+#define INFLUX_STREAM_OUT_FUNCTION(Type, ...)\
+    INFLUX_INLINE std::ostream& operator<<(std::ostream &os, const Type& type ){\
+        os << __VA_ARGS__;\
+        return os;\
+    }
+#endif
+
 #endif //DEFINES_H

@@ -26,6 +26,10 @@ add_executable(InfluxEngine main.cpp
         Engine/Core/Log.cpp
         Engine/Core/Log.h
         Engine/Core/Enums.h
+        Engine/Utils/Internal/BoundingBoxImpl.hpp
+        Engine/Utils/Internal/RectangleImpl.hpp
+        Engine/Utils/AABB2.hpp
+        Engine/Utils/AABB3.hpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
