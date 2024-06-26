@@ -5,18 +5,22 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#include <memory>
+
 #include "Engine/Core/Export.h"
+#include "Engine/Platform/Window.h"
 
 namespace influx {
     class INFLUX_API Engine {
     public:
-        Engine() = default;
+        Engine();
 
-        ~Engine() = default;
+        ~Engine();
 
-        void run();
+        void run() const;
 
     private:
+        std::unique_ptr<Window> m_window_native = nullptr;
     };
 } // influx
 

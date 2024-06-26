@@ -5,6 +5,8 @@
 #ifndef WINDOWSWINDOW_H
 #define WINDOWSWINDOW_H
 
+#include <GLFW/glfw3.h>
+
 #include "Engine/Core/Export.h"
 #include "Engine/Platform/Window.h"
 
@@ -35,8 +37,11 @@ namespace influx {
 
         void swapBuffers() override;
 
+        INFLUX_NODISCARD INFLUX_INLINE bool shouldClose() const override;
+
     private:
-        WindowCreateInfo m_CreateInfo{};
+        WindowCreateInfo m_create_info{};
+        GLFWwindow* m_window = nullptr;
     };
 }
 
