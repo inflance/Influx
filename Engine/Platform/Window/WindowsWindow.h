@@ -15,29 +15,29 @@ namespace influx {
     public:
         explicit WindowsWindow(const WindowCreateInfo& windowCreateInfo);
 
-        void onCreate() override;
+        void OnCreate() override;
 
-        void onUpdate() override;
+        void OnUpdate() override;
 
-        void onResize(uint32_t width, uint32_t height) override;
+        void OnResize(uint32_t width, uint32_t height) override;
 
-        void onClose() override;
+        void OnClose() override;
 
-        INFLUX_INLINE void setVSync(bool enabled) override;
+        INFLUX_INLINE void SetVSync(bool enabled) override;
 
-        INFLUX_NODISCARD INFLUX_INLINE bool isVSync() const override;
+        INFLUX_NODISCARD INFLUX_INLINE bool IsVSync() const override;
 
-        INFLUX_NODISCARD INFLUX_INLINE uint32_t getWidth() const override;
+        INFLUX_NODISCARD INFLUX_INLINE uint32_t GetWidth() const override;
 
-        INFLUX_NODISCARD INFLUX_INLINE uint32_t getHeight() const override;
+        INFLUX_NODISCARD INFLUX_INLINE uint32_t GetHeight() const override;
 
-        INFLUX_NODISCARD INFLUX_INLINE const std::string &getWindowTitle() const override;
+        INFLUX_NODISCARD INFLUX_INLINE const std::string &GetWindowTitle() const override;
 
-        INFLUX_NODISCARD INFLUX_INLINE void *getNativeWindow() const override;
+        INFLUX_NODISCARD INFLUX_INLINE void *GetNativeWindow() const override;
 
-        void swapBuffers() override;
+        void SwapBuffers() override;
 
-        INFLUX_NODISCARD INFLUX_INLINE bool shouldClose() const override;
+        INFLUX_NODISCARD INFLUX_INLINE bool ShouldClose() const override;
 
     private:
         WindowCreateInfo m_create_info{};

@@ -8,14 +8,9 @@
 #include "Engine/Utils/BoundingSphere.hpp"
 
 int main() {
-    influx::Log::onCreate("Influx", "influx.log");
-    std::cout << influx::AABB2<double>();
-    std::cout << influx::AABB3<double>();
-    std::cout << influx::BoundingSphere<double>();
-    influx::AABB2<double> aabb2{-1, -1, 1, 1};
-    std::cout <<  aabb2.contains(glm::vec2{});
+    influx::Log::OnCreate("Influx", "influx.log");
     influx::Engine engine;
-    engine.run();
-    influx::Log::onDestory();
+    engine.Run();
+    influx::Log::OnDestory();
     return 0;
 }

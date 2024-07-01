@@ -134,6 +134,13 @@ namespace influx {
     INFLUX_CONSTEXPR Flags<BitType> operator~(BitType bit) {
         return ~Flags<BitType>(bit);
     }
+
+    enum class ProjectionType {
+        Perspective,
+        Orthographic
+    };
+
+
 }
 
 #endif //ENUMS_H

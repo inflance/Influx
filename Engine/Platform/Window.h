@@ -34,25 +34,25 @@ class INFLUX_API Window {
 public:
     virtual ~Window() = default;
 
-    virtual void onCreate() = 0;
-    virtual void onUpdate() = 0;
-    virtual void onResize(uint32_t width, uint32_t height) = 0;
-    virtual void onClose() = 0;
+    virtual void OnCreate() = 0;
+    virtual void OnUpdate() = 0;
+    virtual void OnResize(uint32_t width, uint32_t height) = 0;
+    virtual void OnClose() = 0;
 
-    virtual INFLUX_INLINE void setVSync(bool enabled) = 0;
+    virtual INFLUX_INLINE void SetVSync(bool enabled) = 0;
 
-    INFLUX_NODISCARD virtual INFLUX_INLINE bool isVSync() const = 0;
-    INFLUX_NODISCARD virtual INFLUX_INLINE uint32_t getWidth() const  = 0;
-    INFLUX_NODISCARD virtual INFLUX_INLINE uint32_t  getHeight() const = 0;
-    INFLUX_NODISCARD virtual INFLUX_INLINE const std::string& getWindowTitle() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE bool IsVSync() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE uint32_t GetWidth() const  = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE uint32_t  GetHeight() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE const std::string& GetWindowTitle() const = 0;
 
-    INFLUX_NODISCARD virtual INFLUX_INLINE void* getNativeWindow() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE void* GetNativeWindow() const = 0;
 
-    virtual void swapBuffers() = 0;
+    virtual void SwapBuffers() = 0;
 
-    INFLUX_NODISCARD virtual INFLUX_INLINE bool shouldClose() const = 0;
+    INFLUX_NODISCARD virtual INFLUX_INLINE bool ShouldClose() const = 0;
 
-    static std::unique_ptr<Window> create(const WindowCreateInfo& createInfo);
+    static std::unique_ptr<Window> Create(const WindowCreateInfo& createInfo);
 };
 
 } // influx

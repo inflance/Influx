@@ -7,7 +7,7 @@
 #include "Window/WindowsWindow.h"
 
 namespace influx {
-    std::unique_ptr<Window> Window::create(const WindowCreateInfo &createInfo)
+    std::unique_ptr<Window> Window::Create(const WindowCreateInfo &createInfo)
     {
 #if defined(INFLUX_PLATFORM_WINDOWS)
         return std::make_unique<WindowsWindow>(createInfo);

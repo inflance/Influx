@@ -17,7 +17,7 @@ namespace influx {
 
         ~Engine();
 
-        void run() const;
+        void Run() const;
 
     private:
         std::unique_ptr<Window> m_window_native = nullptr;

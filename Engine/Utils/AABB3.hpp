@@ -28,40 +28,40 @@ namespace influx {
               const T &maxZ): m_min(minX, minY, minZ), m_max(maxX, maxY, maxZ) {
         }
 
-        INFLUX_INLINE const ElementType &min() const { return m_min; }
+        INFLUX_INLINE const ElementType &Min() const { return m_min; }
 
-        INFLUX_INLINE const ElementType &max() const { return m_max; }
+        INFLUX_INLINE const ElementType &Max() const { return m_max; }
 
-        void setMin(const ElementType &min) { m_min = min; }
+        void SetMin(const ElementType &min) { m_min = min; }
 
-        void setMax(const ElementType &max) { m_max = max; }
+        void SetMax(const ElementType &max) { m_max = max; }
 
-        void expand(const ElementType &point) {
+        void Expand(const ElementType &point) {
             m_min = glm::min(m_min, point);
             m_max = glm::max(m_max, point);
         }
 
-        INFLUX_INLINE bool contains(const ElementType &point) const {
+        INFLUX_INLINE bool Contains(const ElementType &point) const {
             return point.x >= m_min.x && point.x <= m_max.x &&
                    point.y >= m_min.y && point.y <= m_max.y &&
                    point.z >= m_min.z && point.z <= m_max.z;
         }
 
-        INFLUX_INLINE bool contains(const AABB3 &box) const {
-            return contains(box.min()) && contains(box.max());
+        INFLUX_INLINE bool Contains(const AABB3 &box) const {
+            return contains(box.Min()) && contains(box.Max());
         }
 
-        INFLUX_NODISCARD INFLUX_INLINE bool valid() const {
+        INFLUX_NODISCARD INFLUX_INLINE bool Valid() const {
             return m_min.x <= m_max.x && m_min.y <= m_max.y && m_min.z <= m_max.z;
         }
 
-        INFLUX_INLINE AABB3 &merge(const AABB3 &box) {
-            m_min = glm::min(m_min, box.min());
-            m_max = glm::max(m_max, box.max());
+        INFLUX_INLINE AABB3 &Merge(const AABB3 &box) {
+            m_min = glm::min(m_min, box.Min());
+            m_max = glm::max(m_max, box.Max());
             return *this;
         }
 
-        INFLUX_NODISCARD INFLUX_INLINE bool empty() const {
+        INFLUX_NODISCARD INFLUX_INLINE bool Empty() const {
             return (m_min.x == m_max.x && m_min.y == m_max.y && m_min.z == m_max.z) || (
                        m_min.x == MaxValue && m_min.y == MaxValue && m_min.z == MaxValue && m_max.x == MinValue && m_max
                        .y == MinValue && m_max.z == MinValue);
@@ -78,6 +78,6 @@ namespace influx {
 } // influx
 template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>,T>>
 INFLUX_STREAM_OUT_FUNCTION(influx::AABB3<T>,
-                           "AABB3: min={" << type.min().x << "," << type.min().y << ","<< type.min().z << "}, max={" <<
-                           type.max().x << "," << type.max().y<< "," << type.max().z << "}")
+                           "AABB3: min={" << type.Min().x << "," << type.Min().y << ","<< type.Min().z << "}, max={" <<
+                           type.Max().x << "," << type.Max().y<< "," << type.Max().z << "}")
 #endif //AABB3_HPP

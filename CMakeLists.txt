@@ -32,7 +32,21 @@ add_executable(InfluxEngine main.cpp
         Engine/Utils/AABB2.hpp
         Engine/Utils/AABB3.hpp
         Engine/Utils/BoundingSphere.hpp
-        Engine/Utils/Test/Test.cpp
+        Engine/Utils/Test/TestStringUtils.cpp
+        Engine/Utils/StringUtils.h
+        Engine/Utils/StringUtils.cpp
+        Engine/Core/Test/TestFlags.cpp
+        Engine/Utils/Rect2.hpp
+        Engine/Utils/Rect3.hpp
+        Engine/Utils/Frustum.hpp
+        Engine/Utils/Internal/RangeImpl.hpp
+        Engine/Utils/Range1.hpp
+        Engine/Utils/Range2.hpp
+        Engine/Utils/Range3.hpp
+        Engine/Utils/Ray.hpp
+        Engine/Utils/Ray.hpp
+        Engine/Utils/Plane.hpp
+        Engine/Utils/Internal/SizeImpl.hpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

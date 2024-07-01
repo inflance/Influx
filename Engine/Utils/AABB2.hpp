@@ -27,39 +27,39 @@ namespace influx {
         AABB2(const T &minX, const T &minY, const T &maxX, const T &maxY): m_min(minX, minY), m_max(maxX, maxY) {
         }
 
-        INFLUX_INLINE const ElementType &min() const { return m_min; }
+        INFLUX_INLINE const ElementType &Min() const { return m_min; }
 
-        INFLUX_INLINE const ElementType &max() const { return m_max; }
+        INFLUX_INLINE const ElementType &Max() const { return m_max; }
 
-        void setMin(const ElementType &min) { m_min = min; }
+        void SetMin(const ElementType &min) { m_min = min; }
 
-        void setMax(const ElementType &max) { m_max = max; }
+        void SetMax(const ElementType &max) { m_max = max; }
 
-        void expand(const ElementType &point) {
+        void Expand(const ElementType &point) {
             m_min = glm::min(m_min, point);
             m_max = glm::max(m_max, point);
         }
 
-        INFLUX_INLINE bool contains(const ElementType &point) const {
+        INFLUX_INLINE bool Contains(const ElementType &point) const {
             return point.x >= m_min.x && point.x <= m_max.x &&
                    point.y >= m_min.y && point.y <= m_max.y;
         }
 
-        INFLUX_INLINE bool contains(const AABB2 &box) const {
-            return contains(box.min()) && contains(box.max());
+        INFLUX_INLINE bool Contains(const AABB2 &box) const {
+            return contains(box.m_min) && contains(box.m_max);
         }
 
-        INFLUX_NODISCARD INFLUX_INLINE bool valid() const {
+        INFLUX_NODISCARD INFLUX_INLINE bool Valid() const {
             return m_min.x <= m_max.x && m_min.y <= m_max.y;
         }
 
-        INFLUX_INLINE AABB2 &merge(const AABB2 &box) {
+        INFLUX_INLINE AABB2 &Merge(const AABB2 &box) {
             m_min = glm::min(m_min, box.min());
             m_max = glm::max(m_max, box.max());
             return *this;
         }
 
-        INFLUX_NODISCARD INFLUX_INLINE bool empty() const {
+        INFLUX_NODISCARD INFLUX_INLINE bool Empty() const {
             return (m_min.x == m_max.x && m_min.y == m_max.y) || (
                        m_min.x == MaxValue && m_min.y == MaxValue && m_max.x == MinValue && m_max.y == MinValue);
         }
