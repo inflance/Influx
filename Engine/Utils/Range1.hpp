@@ -14,20 +14,22 @@ namespace influx {
 	template<typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>, T> >
 	class Range1 : public RangeImpl<T>{
 	public:
+		using ElementType = T;
+
 		Range1() = default;
 
-		Range1(const T &start, const T &end) : m_start(start), m_end(end) {
+		Range1(const ElementType &start, const ElementType &end) : m_start(start), m_end(end) {
 		}
 
-		INFLUX_INLINE const T &Start() const { return m_start; }
+		INFLUX_INLINE const ElementType &Start() const { return m_start; }
 
-		INFLUX_INLINE const T &End() const { return m_end; }
+		INFLUX_INLINE const ElementType &End() const { return m_end; }
 
-		INFLUX_INLINE void SetStart(const T &start) { m_start = start; }
+		INFLUX_INLINE void SetStart(const ElementType &start) { m_start = start; }
 
-		INFLUX_INLINE void SetEnd(const T &end) { m_end = end; }
+		INFLUX_INLINE void SetEnd(const ElementType &end) { m_end = end; }
 
-		INFLUX_INLINE bool Contains(const T &value) const {
+		INFLUX_INLINE bool Contains(const ElementType &value) const {
 			return value >= m_start && value <= m_end;
 		}
 
@@ -48,34 +50,29 @@ namespace influx {
 			m_end = std::max(m_end, range.m_end);
 		}
 
-		void MakeEmpty() {
-			m_start = std::numeric_limits<T>::max();
-			m_end = -std::numeric_limits<T>::max();
-		}
-
-		INFLUX_NODISCARD INFLUX_INLINE T Length() const {
+		INFLUX_NODISCARD INFLUX_INLINE ElementType Length() const {
 			return m_end - m_start;
 		}
 
-		INFLUX_INLINE T Center() const {
+		INFLUX_INLINE ElementType Center() const {
 			return (m_start + m_end) / 2;
 		}
 
-		INFLUX_INLINE T Clamp(const T &value) const {
+		INFLUX_INLINE ElementType Clamp(const ElementType &value) const {
 			return std::clamp(value, m_start, m_end);
 		}
 
-		INFLUX_INLINE T Lerp(const T &t) const {
+		INFLUX_INLINE ElementType Lerp(const ElementType &t) const {
 			return m_start + t * Length();
 		}
 
-		INFLUX_INLINE T LerpClamped(const T &t) const {
+		INFLUX_INLINE ElementType LerpClamped(const ElementType &t) const {
 			return m_start + Clamp(t) * Length();
 		}
 
 	private:
-		T m_start = -std::numeric_limits<T>::max();
-		T m_end = std::numeric_limits<T>::max();
+		ElementType m_start {};
+		ElementType m_end {};
 	};
 } // influx
 
